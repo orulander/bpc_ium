@@ -10,6 +10,8 @@ import android.util.Patterns
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -42,7 +44,16 @@ class RegisterActivity : AppCompatActivity() {
         val mailEt = findViewById<EditText>(R.id.etMail)
         val passwordEt = findViewById<EditText>(R.id.etPassword)
         val confirmPasswordEt = findViewById<EditText>(R.id.etConfirmPassword)
-        val checkbox = findViewById<CheckBox>(R.id.checkBox)
+        //val checkbox = findViewById<CheckBox>(R.id.checkBox)
+        // aggiunta checkbox
+        //val checkbox1 = findViewById<CheckBox>(R.id.checkBox1)
+        //val checkbox2 = findViewById<CheckBox>(R.id.checkBox2)
+        val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
+
+
+
+
+
 
         val date = findViewById<EditText>(R.id.etDate)
         val tvDate = findViewById<TextView>(R.id.tvDate)
@@ -87,7 +98,8 @@ class RegisterActivity : AppCompatActivity() {
 
         val textWatcher = object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                updateRegisterButton(usernameEt, passwordEt, mailEt, date, checkbox, button)
+                //updateRegisterButton(usernameEt, passwordEt, mailEt, date, checkbox, button)
+                updateRegisterButton(usernameEt, passwordEt, mailEt, date, radioGroup, button)
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -102,11 +114,39 @@ class RegisterActivity : AppCompatActivity() {
         mailEt.addTextChangedListener(textWatcher)
         date.addTextChangedListener(textWatcher)
 
+        // comportamento radioButton
+
+        // Aggiungi un listener al RadioGroup
+        radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            // Verifica se è stato selezionato almeno un RadioButton
+            if (checkedId != -1) {
+                // Un RadioButton è stato selezionato, abilita il pulsante
+                updateRegisterButton(usernameEt, passwordEt, mailEt, date, radioGroup, button)
+            } else {
+                // Nessun RadioButton è selezionato, disabilita il pulsante
+                button.alpha = 0.3f
+                button.isEnabled = false
+            }
+        }
+
+        // comportamenti checkbox
+        /*
         checkbox.setOnCheckedChangeListener{
             _, isChecked ->
             updateRegisterButton(usernameEt, passwordEt, mailEt, date, checkbox, button)
         }
 
+        checkbox1.setOnCheckedChangeListener{
+                _, isChecked ->
+            updateRegisterButton(usernameEt, passwordEt, mailEt, date, checkbox1, button)
+        }
+
+        checkbox2.setOnCheckedChangeListener{
+                _, isChecked ->
+            updateRegisterButton(usernameEt, passwordEt, mailEt, date, checkbox2, button)
+        }
+        */
+        
         val help = findViewById<TextView>(R.id.tvHelp)
         TooltipCompat.setTooltipText(help, "La password deve avere almeno 8 caratteri")
     }
@@ -140,8 +180,8 @@ class RegisterActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun updateRegisterButton(etUsername : EditText, etPassword: EditText, etMail: EditText, etDate: EditText, checkbox: CheckBox, button: Button){
-        if(etUsername.text.isNotBlank() && etPassword.text.isNotBlank() && etMail.text.isNotBlank() && etDate.text.isNotBlank() && checkbox.isChecked){
+    fun updateRegisterButton(etUsername : EditText, etPassword: EditText, etMail: EditText, etDate: EditText, radioGroup: RadioGroup, button: Button){
+        if(etUsername.text.isNotBlank() && etPassword.text.isNotBlank() && etMail.text.isNotBlank() && etDate.text.isNotBlank() && radioGroup.checkedRadioButtonId != -1){
             button.alpha = 1f
             button.isEnabled = true
         }else{

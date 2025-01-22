@@ -111,14 +111,30 @@
         android:focusable="false"
         android:clickable="true" />
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Accetto i termini di servizio"
-        app:buttonTint="@color/cobalt"
-        />
+        android:orientation="vertical">
 
+        <RadioButton
+            android:id="@+id/radioButtonCliente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sono un cliente" />
+
+        <RadioButton
+            android:id="@+id/radioButtonTrainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sono un trainer" />
+
+        <RadioButton
+            android:id="@+id/radioButtonSponsor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sono uno sponsor" />
+    </RadioGroup>
 
     <Button
         style="@style/BaseButton"
