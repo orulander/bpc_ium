@@ -8,22 +8,17 @@ import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
 import android.widget.Button
-import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.TooltipCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import java.time.LocalDate
 import java.util.Calendar
-import java.util.Date
 
-class RegisterActivityCliente : AppCompatActivity() {
+class RegisterActivityTrainer : AppCompatActivity() {
     object GlobalData{
         var user_list = mutableListOf<User>()
     }
@@ -77,7 +72,7 @@ class RegisterActivityCliente : AppCompatActivity() {
                 confirmPasswordEt.setError("Le password non corrispondono")
                 invalid = true
             }
-            if (RegisterActivityCliente.GlobalData.user_list.any{it.name == usernameEt.text.toString()}){
+            if (RegisterActivityTrainer.GlobalData.user_list.any{it.name == usernameEt.text.toString()}){
                 usernameEt.setError("Username già esistente")
                 invalid = true
             }

@@ -8,20 +8,15 @@ import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
 import android.widget.Button
-import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.TooltipCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import java.time.LocalDate
 import java.util.Calendar
-import java.util.Date
 
 class RegisterActivitySponsor : AppCompatActivity() {
     object GlobalData{
