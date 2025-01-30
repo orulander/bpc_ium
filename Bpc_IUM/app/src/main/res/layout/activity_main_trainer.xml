@@ -21,82 +21,43 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.16" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        style="@style/BaseButton"
-        android:text="Accedi"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.525" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="418dp"
         android:layout_height="252dp"
-        android:orientation="horizontal"
+        android:layout_marginBottom="256dp"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.682">
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
+
+        <Button
+            android:id="@+id/btnCrea"
+            style="@style/BaseButton"
+            android:text="Crea percorso"
+            tools:layout_editor_absoluteX="117dp"
+            tools:layout_editor_absoluteY="222dp" />
+
+        <Button
+            android:id="@+id/btnPercorsi"
+            style="@style/BaseButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="Sei un nuovo utente?" />
+            android:text="Tutti i percorsi"
+            tools:layout_editor_absoluteX="110dp"
+            tools:layout_editor_absoluteY="282dp" />
 
-        <TextView
-            android:id="@+id/tvRegister"
+        <Button
+            android:id="@+id/btnProgressi"
+            style="@style/BaseButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="@string/register"
-            android:textColor="@color/cobalt" />
+            android:text="Progressi Clienti"
+            tools:layout_editor_absoluteX="110dp"
+            tools:layout_editor_absoluteY="350dp" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/errorLoginText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:text="@string/login_error"
-        android:textColor="@color/red"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Inserisci il tuo username"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.297" />
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Inserisci la tua password"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.404" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
