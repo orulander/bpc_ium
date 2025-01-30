@@ -1,0 +1,32 @@
+<!-- Necessario per il menu a tendina (strings.xml) -->
+    <string-array name="spinner_items">
+        <item>DONNA</item>
+        <item>UOMO</item>
+        <item>ALTRO</item>
+    </string-array>
+
+
+    <!-- inizio prova menu a tendina da 3 elementi (xml) -->
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!-- fine prova menu a tendina da 3 elementi -->
+
+
+         /**
+         * dovrebbe far funzionare il menu a tendina (kt)
+         **/
+        val spinner: Spinner = findViewById(R.id.spinner)
+
+        val adapter_spinner = ArrayAdapter.createFromResource(
+            this,
+            R.array.spinner_items,
+            android.R.layout.simple_spinner_item
+        )
+
+        adapter_spinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        spinner.adapter = adapter_spinner
