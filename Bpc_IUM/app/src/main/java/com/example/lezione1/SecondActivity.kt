@@ -28,19 +28,10 @@ class SecondActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val plusButton = findViewById<Button>(R.id.btnPlus)
-        val minusButton = findViewById<Button>(R.id.btnMinus)
-        val points = findViewById<TextView>(R.id.tvPoints)
+
         val seekbar = findViewById<SeekBar>(R.id.seekbar)
         val vote = findViewById<TextView>(R.id.tvVote)
         val logoutButton = findViewById<Button>(R.id.btnLogout)
-
-        plusButton.setOnClickListener{
-            add(points)
-        }
-        minusButton.setOnClickListener{
-            minus(points)
-        }
 
         logoutButton.setOnClickListener{
             logout()
@@ -94,9 +85,7 @@ class SecondActivity : AppCompatActivity() {
          * dovrebbe far funzionare la navbar, non funziona perché ho collegato tutto con logout
          * per fare un check veloce e perchéon abbiamo le pagine necessarie
          **/
-
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navbar)
-
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
@@ -119,23 +108,39 @@ class SecondActivity : AppCompatActivity() {
         }
     }
 
-    fun add(pts : TextView){
-        score++
-        pts.text = "Punti Esperienza: $score"
-    }
-
-    fun minus(pts: TextView){
-        if (score - 1 > 0) {
-            score--
-        }
-        else{
-            score = 0
-        }
-        pts.text = "Punti Esperienza: $score"
-    }
-
     fun logout(){
         val intent = Intent(this,MainActivity::class.java)
         startActivity(intent)
     }
 }
+
+
+/**
+ * Cose che ho tolto perché mi serviva spazio nella pagina
+ *
+ *         val plusButton = findViewById<Button>(R.id.btnPlus)
+ *         val minusButton = findViewById<Button>(R.id.btnMinus)
+ *         val points = findViewById<TextView>(R.id.tvPoints)
+ *
+ *         plusButton.setOnClickListener{
+ *             add(points)
+ *         }
+ *         minusButton.setOnClickListener{
+ *             minus(points)
+ *         }
+ *
+ *     fun add(pts : TextView){
+ *         score++
+ *         pts.text = "Punti Esperienza: $score"
+ *     }
+ *
+ *     fun minus(pts: TextView){
+ *         if (score - 1 > 0) {
+ *             score--
+ *         }
+ *         else{
+ *             score = 0
+ *         }
+ *         pts.text = "Punti Esperienza: $score"
+ *     }
+ **/
