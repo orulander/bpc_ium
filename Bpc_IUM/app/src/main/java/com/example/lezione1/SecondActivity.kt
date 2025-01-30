@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class SecondActivity : AppCompatActivity() {
     var score = 0
@@ -89,6 +90,33 @@ class SecondActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
 
+        /**
+         * dovrebbe far funzionare la navbar, non funziona perché ho collegato tutto con logout
+         * per fare un check veloce e perchéon abbiamo le pagine necessarie
+         **/
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navbar)
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    // Azione per Home
+                    logout()
+                    true
+                }
+                R.id.navigation_search -> {
+                    // Azione per Cerca
+                    logout()
+                    true
+                }
+                R.id.navigation_profile -> {
+                    // Azione per Profilo
+                    logout()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     fun add(pts : TextView){
