@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
             login()
         }
 
-
         val register = findViewById<TextView>(R.id.tvRegister)
         register.setOnClickListener{
             register()

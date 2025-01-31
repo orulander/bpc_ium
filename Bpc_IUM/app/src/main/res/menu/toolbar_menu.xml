@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/aaaa"
+        android:title="Non so che altro aggiungere" />
+
+    <item
+        android:id="@+id/modifica"
+        android:title="Modifica Profilo" />
+
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/person_24"
+        android:iconTint="@color/red"
+        android:title="Logout"/>
+</menu>

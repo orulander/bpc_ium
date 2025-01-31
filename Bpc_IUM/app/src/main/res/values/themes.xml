@@ -21,12 +21,10 @@
         <item name ="android:backgroundTint">#F44336</item>
     </style>
 
-    <style name="Seekbar">
+    <style name="ToolBar" parent="Widget.MaterialComponents.Toolbar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:progressTint">#002C37</item>
-        <item name="android:progressBackgroundTint">#80AAB7</item>
-        <item name="android:thumbTint">#002C37</item>
+        <item name="background">@color/cobalt</item>
     </style>
 
     <style name="NavBar" parent="Widget.MaterialComponents.BottomNavigationView">

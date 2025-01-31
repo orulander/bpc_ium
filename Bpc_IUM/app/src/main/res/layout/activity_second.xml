@@ -9,6 +9,25 @@
     tools:context=".SecondActivity"
     android:background="@color/light_blue" >
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cobalt"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ora Bestemmio"
+            android:textColor="@color/red"
+            android:textSize="20sp"
+            android:layout_gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:textStyle="bold"/>
+    </androidx.appcompat.widget.Toolbar>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,7 +52,7 @@
         <ImageButton
             style="@style/BaseButton"
             android:id="@+id/ibTask"
-            android:src="@drawable/baseline_checklist_24" />
+            android:src="@drawable/person_24" />
 
     <EditText
         android:layout_width="wrap_content"
