@@ -40,6 +40,9 @@
             android:name=".ProfileSponsor"
             android:exported="false" />
         <activity
+            android:name=".PageChat"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
