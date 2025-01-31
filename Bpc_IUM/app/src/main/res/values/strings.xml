@@ -5,8 +5,8 @@
     <string name="success_register">Registrazione avvenuta con successo</string>
 
     <string-array name="spinner_items">
-        <item>DONNA</item>
-        <item>UOMO</item>
-        <item>ALTRO</item>
+        <item>Atleta</item>
+        <item>Trainer</item>
+        <item>Sponsor</item>
     </string-array>
 </resources>

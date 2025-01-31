@@ -7,11 +7,13 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -19,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.TooltipCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.lezione1.RegisterActivityContinuo.GlobalData
 import java.time.LocalDate
 import java.util.Calendar
 import java.util.Date
@@ -40,12 +43,4 @@ class RegisterActivitySponsor : AppCompatActivity() {
         /** CODICE GENERALE PAGINA QUA DENTRO **/
     }
 
-    fun register(username: String, mail: String, password:String, date: String){
-        var new_user = User(username,mail,password, date)
-        GlobalData.user_list.add(new_user)
-        Log.i("myTag",GlobalData.user_list.toString())
-        intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("fromRegisterActivity", true)
-        startActivity(intent)
-    }
 }

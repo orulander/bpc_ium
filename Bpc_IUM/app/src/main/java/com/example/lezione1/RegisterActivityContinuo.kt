@@ -21,7 +21,7 @@ import androidx.core.view.WindowInsetsCompat
 import java.util.Calendar
 
 class RegisterActivityContinuo : AppCompatActivity() {
-    object GlobalData{
+    object GlobalData {
         var user_list = mutableListOf<User>()
     }
 
@@ -34,15 +34,15 @@ class RegisterActivityContinuo : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val button = findViewById<Button>(R.id.btnRegister)
-        button.isEnabled = false
-        button.alpha = 0.3f
+
+        val buttonRegistra = findViewById<Button>(R.id.btnRegister)
+        buttonRegistra.isEnabled = false
+        buttonRegistra.alpha = 0.3f
         val nameEt = findViewById<EditText>(R.id.etName)
         val cognomeEt = findViewById<EditText>(R.id.etCognome)
+        val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
         val pesoEt = findViewById<EditText>(R.id.etPeso)
         val altezzaEt = findViewById<EditText>(R.id.etAltezza)
-
-        val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
         val spinner: Spinner = findViewById(R.id.spinner)
 
         val adapter_spinner = ArrayAdapter.createFromResource(
@@ -51,10 +51,29 @@ class RegisterActivityContinuo : AppCompatActivity() {
             android.R.layout.simple_spinner_item
         )
 
+        buttonRegistra.setOnClickListener {
+            var invalid = false
+            val peso = pesoEt.text.toString().toDoubleOrNull()
+            val altezza = pesoEt.text.toString().toDoubleOrNull()
+
+            if (peso == null || peso <= 0) {
+                pesoEt.text.clear()
+                pesoEt.setError("Il peso non può zero")
+                invalid = true
+            }
+            if (altezza == null || altezza <= 0) {
+                altezzaEt.text.clear()
+                altezzaEt.setError("L'altezza non può essere minore di zero")
+                invalid = true
+            }
+            if (!invalid){
+                register()
+            }
+        }
+
         val textWatcher = object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                //updateRegisterButton(usernameEt, passwordEt, mailEt, date, checkbox, button)
-                updateRegisterButton(nameEt, cognomeEt, altezzaEt, pesoEt, radioGroup, spinner, button)
+                updateRegisterButton(nameEt, cognomeEt, radioGroup, pesoEt, altezzaEt, spinner, buttonRegistra)
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -69,17 +88,12 @@ class RegisterActivityContinuo : AppCompatActivity() {
         altezzaEt.addTextChangedListener(textWatcher)
         pesoEt.addTextChangedListener(textWatcher)
 
-        // comportamento radioButton
-        // Aggiungi un listener al RadioGroup
         radioGroup.setOnCheckedChangeListener { group, checkedId ->
-            // Verifica se è stato selezionato almeno un RadioButton
             if (checkedId != -1) {
-                // Un RadioButton è stato selezionato, abilita il pulsante
-                updateRegisterButton(nameEt, cognomeEt, altezzaEt, pesoEt, radioGroup, spinner, button)
+                updateRegisterButton(nameEt, cognomeEt, radioGroup, pesoEt, altezzaEt, spinner, buttonRegistra)
             } else {
-                // Nessun RadioButton è selezionato, disabilita il pulsante
-                button.alpha = 0.3f
-                button.isEnabled = false
+                buttonRegistra.alpha = 0.3f
+                buttonRegistra.isEnabled = false
             }
         }
 
@@ -88,22 +102,18 @@ class RegisterActivityContinuo : AppCompatActivity() {
         spinner.adapter = adapter_spinner
     }
 
-    fun register(name: String, cognome: String, altezza:String, peso: String){
-        var new_user = User(name ,cognome,altezza, peso)
-        GlobalData.user_list.add(new_user)
-        Log.i("myTag",GlobalData.user_list.toString())
-        intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("fromRegisterActivity", true)
-        startActivity(intent)
-    }
-
-    fun updateRegisterButton(etName : EditText, etCognome: EditText, etPeso: EditText, etAltezza: EditText, radioGroup: RadioGroup, spinner: Spinner, button: Button){
-        if(etName.text.isNotBlank() && etCognome.text.isNotBlank() && etPeso.text.isNotBlank() && etAltezza.text.isNotBlank() && radioGroup.checkedRadioButtonId != -1){
+    fun updateRegisterButton(etName : EditText, etCognome: EditText, radioGroup: RadioGroup, etPeso: EditText, etAltezza: EditText, spinner: Spinner, button: Button){
+        if(etName.text.isNotBlank() && etCognome.text.isNotBlank() && radioGroup.checkedRadioButtonId != -1 && etPeso.text.isNotBlank() && etAltezza.text.isNotBlank()){
             button.alpha = 1f
             button.isEnabled = true
         }else{
             button.alpha = 0.3f
             button.isEnabled = false
         }
+    }
+
+    fun register(){
+        intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }
