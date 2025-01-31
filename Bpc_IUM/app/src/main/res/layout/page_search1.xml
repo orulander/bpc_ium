@@ -20,3 +20,4 @@ tools:context=".PageSearch1" >
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

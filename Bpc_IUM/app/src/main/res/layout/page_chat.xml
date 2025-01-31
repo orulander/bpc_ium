@@ -17,6 +17,5 @@
             android:id="@+id/bottom_navbar"
             style="@style/NavBar"
             app:layout_constraintBottom_toBottomOf="parent" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
