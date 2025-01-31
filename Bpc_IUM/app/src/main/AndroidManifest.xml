@@ -25,7 +25,7 @@
             android:name=".HomepageTrainer"
             android:exported="false" />
         <activity
-            android:name=".HomepageSponsore"
+            android:name=".HomepageSponsor"
             android:exported="false" />
         <activity
             android:name=".HomepageCliente"
@@ -38,6 +38,9 @@
             android:exported="false" />
         <activity
             android:name=".ProfileSponsor"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

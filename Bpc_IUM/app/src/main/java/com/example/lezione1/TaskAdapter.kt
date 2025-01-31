@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 class TaskAdapter(private val taskList: MutableList<Task>, var taskCount: TextView) :
     RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
-        class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val task = itemView.findViewById<TextView>(R.id.tvTask)
-            val check = itemView.findViewById<CheckBox>(R.id.cbTask)
-            val clear = itemView.findViewById<ImageButton>(R.id.ibClear)
-        }
+    class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val task = itemView.findViewById<TextView>(R.id.tvTask)
+        val check = itemView.findViewById<CheckBox>(R.id.cbTask)
+        val clear = itemView.findViewById<ImageButton>(R.id.ibClear)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_task, parent, false)
@@ -30,7 +30,7 @@ class TaskAdapter(private val taskList: MutableList<Task>, var taskCount: TextVi
         holder.task.text = task.description
         holder.check.isChecked = task.isCompleted
         holder.check.setOnCheckedChangeListener{
-            _, isChecked ->
+                _, isChecked ->
             if (isChecked){
                 holder.task.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                 task.isCompleted = true

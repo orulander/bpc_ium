@@ -8,22 +8,22 @@
     app:cardCornerRadius="4dp"
     app:cardElevation="2dp">
     <LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cbTask"
-        android:layout_marginLeft="10dp"
-        app:buttonTint="@color/cobalt"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cbTask"
+            android:layout_marginLeft="10dp"
+            app:buttonTint="@color/cobalt"/>
 
         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvTask"
-        android:text="esempio"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvTask"
+            android:text="esempio"/>
 
         <Space
             android:layout_width="0dp"
