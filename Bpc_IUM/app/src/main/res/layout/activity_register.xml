@@ -112,6 +112,14 @@
         android:focusable="false"
         android:clickable="true" />
 
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accetto i termini di servizio"
+        app:buttonTint="@color/cobalt"
+        />
+
     <Button
         style="@style/BaseButton"
         android:text="Continua"
