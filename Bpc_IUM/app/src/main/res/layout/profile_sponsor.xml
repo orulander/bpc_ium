@@ -7,4 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".ProfileSponsor">
 
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navbar"
+        style="@style/NavBar"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
