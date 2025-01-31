@@ -110,9 +110,4 @@ class RegisterActivityContinuo : AppCompatActivity() {
         }
     }
 
-    fun continuo(){
-        val intent = Intent(this, RegisterActivity::class.java)
-        startActivity(intent)
-    }
-
 }

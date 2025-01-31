@@ -114,7 +114,7 @@
     <Button
         style="@style/BaseButton"
         android:text="Continua"
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnContinua"
         android:layout_marginTop="20dp"/>
 
 

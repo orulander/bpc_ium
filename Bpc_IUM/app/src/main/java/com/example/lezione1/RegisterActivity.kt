@@ -37,22 +37,20 @@ class RegisterActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val button = findViewById<Button>(R.id.btnRegister)
+        val button = findViewById<Button>(R.id.btnContinua)
         button.isEnabled = false
         button.alpha = 0.3f
         val usernameEt = findViewById<EditText>(R.id.etUsername)
         val mailEt = findViewById<EditText>(R.id.etMail)
         val passwordEt = findViewById<EditText>(R.id.etPassword)
         val confirmPasswordEt = findViewById<EditText>(R.id.etConfirmPassword)
+
+
         //val checkbox = findViewById<CheckBox>(R.id.checkBox)
         // aggiunta checkbox
         //val checkbox1 = findViewById<CheckBox>(R.id.checkBox1)
         //val checkbox2 = findViewById<CheckBox>(R.id.checkBox2)
         //val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
-
-
-
-
 
 
         val date = findViewById<EditText>(R.id.etDate)
@@ -154,6 +152,11 @@ class RegisterActivity : AppCompatActivity() {
         
         val help = findViewById<TextView>(R.id.tvHelp)
         TooltipCompat.setTooltipText(help, "La password deve avere almeno 8 caratteri")
+
+        button.setOnClickListener{
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun datePicker(date: EditText){
@@ -195,4 +198,5 @@ class RegisterActivity : AppCompatActivity() {
             button.isEnabled = false
         }
     }
+
 }
