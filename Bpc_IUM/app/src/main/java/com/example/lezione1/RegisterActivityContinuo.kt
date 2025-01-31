@@ -24,7 +24,6 @@ class RegisterActivityContinuo : AppCompatActivity() {
     object GlobalData {
         var user_list = mutableListOf<User>()
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
