@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.TooltipCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.lezione1.RegisterActivitySponsor.GlobalData
 import java.time.LocalDate
 import java.util.Calendar
 import java.util.Date
@@ -37,23 +38,31 @@ class RegisterActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val button = findViewById<Button>(R.id.btnContinua)
-        button.isEnabled = false
-        button.alpha = 0.3f
+
+        val buttonContinua = findViewById<Button>(R.id.btnContinua)
+        buttonContinua.isEnabled = false
+        buttonContinua.alpha = 0.3f
         val usernameEt = findViewById<EditText>(R.id.etUsername)
         val mailEt = findViewById<EditText>(R.id.etMail)
         val passwordEt = findViewById<EditText>(R.id.etPassword)
         val confirmPasswordEt = findViewById<EditText>(R.id.etConfirmPassword)
-
         val date = findViewById<EditText>(R.id.etDate)
         val tvDate = findViewById<TextView>(R.id.tvDate)
         date.setOnClickListener {
             datePicker(date)
-
         }
 
-        button.setOnClickListener{
+        buttonContinua.setOnClickListener {
             var invalid = false
+
+            if (RegisterActivity.GlobalData.user_list.any{it.name == usernameEt.text.toString()}){
+                usernameEt.setError("Username già esistente")
+                invalid = true
+            }
+            if (!Patterns.EMAIL_ADDRESS.matcher(mailEt.text.toString()).matches()){
+                mailEt.setError("E-mail non valida")
+                invalid = true
+            }
             if (passwordEt.text.length < 8){
                 passwordEt.text.clear()
                 confirmPasswordEt.text.clear()
@@ -67,30 +76,19 @@ class RegisterActivity : AppCompatActivity() {
                 confirmPasswordEt.setError("Le password non corrispondono")
                 invalid = true
             }
-            if (RegisterActivity.GlobalData.user_list.any{it.name == usernameEt.text.toString()}){
-                usernameEt.setError("Username già esistente")
-                invalid = true
-            }
-            if (!Patterns.EMAIL_ADDRESS.matcher(mailEt.text.toString()).matches()){
-                mailEt.setError("E-mail non valida")
-                invalid = true
-            }
             if (!invalid){
-                register(
+                continua(
                     usernameEt.text.toString(),
                     mailEt.text.toString(),
                     passwordEt.text.toString(),
                     date.text.toString()
                 )
             }
-
         }
 
         val textWatcher = object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                //updateRegisterButton(usernameEt, passwordEt, mailEt, date, checkbox, button)
-                //updateRegisterButton(usernameEt, passwordEt, mailEt, date, radioGroup, button)
-                updateRegisterButton(usernameEt, passwordEt, mailEt, date, button)
+                updateContinuaButton(usernameEt, mailEt, passwordEt, date, buttonContinua)
 
             }
 
@@ -102,17 +100,12 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         usernameEt.addTextChangedListener(textWatcher)
-        passwordEt.addTextChangedListener(textWatcher)
         mailEt.addTextChangedListener(textWatcher)
+        passwordEt.addTextChangedListener(textWatcher)
         date.addTextChangedListener(textWatcher)
 
         val help = findViewById<TextView>(R.id.tvHelp)
         TooltipCompat.setTooltipText(help, "La password deve avere almeno 8 caratteri")
-
-        button.setOnClickListener{
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     fun datePicker(date: EditText){
@@ -135,18 +128,8 @@ class RegisterActivity : AppCompatActivity() {
         datePickerDialog.show()
     }
 
-    fun register(username: String, mail: String, password:String, date: String){
-        var new_user = User(username,mail,password, date)
-        GlobalData.user_list.add(new_user)
-        Log.i("myTag",GlobalData.user_list.toString())
-        intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("fromRegisterActivity", true)
-        startActivity(intent)
-    }
-
-    fun updateRegisterButton(etUsername : EditText, etPassword: EditText, etMail: EditText, etDate: EditText, button: Button){
-        //if(etUsername.text.isNotBlank() && etPassword.text.isNotBlank() && etMail.text.isNotBlank() && etDate.text.isNotBlank() && radioGroup.checkedRadioButtonId != -1){
-        if(etUsername.text.isNotBlank() && etPassword.text.isNotBlank() && etMail.text.isNotBlank() && etDate.text.isNotBlank()){
+    fun updateContinuaButton(etUsername : EditText, etMail: EditText, etPassword: EditText, etDate: EditText, button: Button){
+        if(etUsername.text.isNotBlank() && etMail.text.isNotBlank() && etPassword.text.isNotBlank() && etDate.text.isNotBlank()){
             button.alpha = 1f
             button.isEnabled = true
         }else{
@@ -154,50 +137,13 @@ class RegisterActivity : AppCompatActivity() {
             button.isEnabled = false
         }
     }
+
+    fun continua(username: String, mail: String,password:String,date: String) {
+        var new_user = User(username,mail,password, date)
+        GlobalData.user_list.add(new_user)
+        Log.i("myTag", GlobalData.user_list.toString())
+
+        val intent = Intent(this, RegisterActivityContinuo::class.java)
+        startActivity(intent)
+    }
 }
-
-
-
-//val checkbox = findViewById<CheckBox>(R.id.checkBox)
-// aggiunta checkbox
-//val checkbox1 = findViewById<CheckBox>(R.id.checkBox1)
-//val checkbox2 = findViewById<CheckBox>(R.id.checkBox2)
-//val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
-
-
-
-/*
-      // comportamento radioButton
-
-      // Aggiungi un listener al RadioGroup
-      radioGroup.setOnCheckedChangeListener { group, checkedId ->
-          // Verifica se è stato selezionato almeno un RadioButton
-          if (checkedId != -1) {
-              // Un RadioButton è stato selezionato, abilita il pulsante
-              updateRegisterButton(usernameEt, passwordEt, mailEt, date, radioGroup, button)
-          } else {
-              // Nessun RadioButton è selezionato, disabilita il pulsante
-              button.alpha = 0.3f
-              button.isEnabled = false
-          }
-      }
-
-       */
-
-// comportamenti checkbox
-/*
-checkbox.setOnCheckedChangeListener{
-    _, isChecked ->
-    updateRegisterButton(usernameEt, passwordEt, mailEt, date, checkbox, button)
-}
-
-checkbox1.setOnCheckedChangeListener{
-        _, isChecked ->
-    updateRegisterButton(usernameEt, passwordEt, mailEt, date, checkbox1, button)
-}
-
-checkbox2.setOnCheckedChangeListener{
-        _, isChecked ->
-    updateRegisterButton(usernameEt, passwordEt, mailEt, date, checkbox2, button)
-}
-*/
