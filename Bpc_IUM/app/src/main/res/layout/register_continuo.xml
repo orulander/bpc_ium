@@ -20,34 +20,34 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"
+        android:text="Nome"
         android:layout_gravity="left"
         android:layout_marginLeft="70dp"
         />
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Scegli un username"
+        android:hint="Inserisci il nome"
         android:inputType="text" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="E-mail"
+        android:text="Cognome"
         android:layout_gravity="left"
         android:layout_marginLeft="70dp"
         />
 
     <EditText
+        android:id="@+id/etCognome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textEmailAddress"
-        android:hint="Inserisci la tua mail"
-        android:id="@+id/etMail"/>
+        android:hint="Inserisci il cognome" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,60 +56,67 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password"
+        android:text="Sesso"
         android:layout_marginLeft="70dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="\?"
-        android:layout_marginLeft="10dp"
-        android:textStyle="bold"
-        android:textColor="@color/cobalt"
-        android:id="@+id/tvHelp"/>
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioButtonF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="F"
+            android:layout_marginLeft="10dp" />
+
+        <RadioButton
+            android:id="@+id/radioButtonM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M"
+            android:layout_marginLeft="10dp" />
+
+        </RadioGroup>
+
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Scegli una password"
-        android:inputType="textPassword" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Conferma password"
+        android:text="Peso"
         android:layout_gravity="left"
         android:layout_marginLeft="70dp"
         />
 
     <EditText
-        android:id="@+id/etConfirmPassword"
+        android:id="@+id/etPeso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Reinserisci la password"
-        android:inputType="textPassword" />
+        android:hint="Inserisci il tuo peso" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Data di nascita"
+        android:text="Altezza"
         android:layout_gravity="left"
         android:layout_marginLeft="70dp"
-        android:id="@+id/tvDate"/>
+        />
 
     <EditText
+        android:id="@+id/etAltezza"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text"
-        android:hint="Inserisci data"
-        android:id="@+id/etDate"
-        android:focusable="false"
-        android:clickable="true" />
+        android:hint="Inserisci la tua altezza" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp" />
 
     <Button
         style="@style/BaseButton"

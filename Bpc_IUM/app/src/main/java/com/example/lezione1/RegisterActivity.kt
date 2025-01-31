@@ -48,7 +48,7 @@ class RegisterActivity : AppCompatActivity() {
         // aggiunta checkbox
         //val checkbox1 = findViewById<CheckBox>(R.id.checkBox1)
         //val checkbox2 = findViewById<CheckBox>(R.id.checkBox2)
-        val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
+        //val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
 
 
 
@@ -99,7 +99,9 @@ class RegisterActivity : AppCompatActivity() {
         val textWatcher = object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 //updateRegisterButton(usernameEt, passwordEt, mailEt, date, checkbox, button)
-                updateRegisterButton(usernameEt, passwordEt, mailEt, date, radioGroup, button)
+                //updateRegisterButton(usernameEt, passwordEt, mailEt, date, radioGroup, button)
+                updateRegisterButton(usernameEt, passwordEt, mailEt, date, button)
+
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -114,6 +116,7 @@ class RegisterActivity : AppCompatActivity() {
         mailEt.addTextChangedListener(textWatcher)
         date.addTextChangedListener(textWatcher)
 
+        /*
         // comportamento radioButton
 
         // Aggiungi un listener al RadioGroup
@@ -128,6 +131,8 @@ class RegisterActivity : AppCompatActivity() {
                 button.isEnabled = false
             }
         }
+
+         */
 
         // comportamenti checkbox
         /*
@@ -180,8 +185,9 @@ class RegisterActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun updateRegisterButton(etUsername : EditText, etPassword: EditText, etMail: EditText, etDate: EditText, radioGroup: RadioGroup, button: Button){
-        if(etUsername.text.isNotBlank() && etPassword.text.isNotBlank() && etMail.text.isNotBlank() && etDate.text.isNotBlank() && radioGroup.checkedRadioButtonId != -1){
+    fun updateRegisterButton(etUsername : EditText, etPassword: EditText, etMail: EditText, etDate: EditText, button: Button){
+        //if(etUsername.text.isNotBlank() && etPassword.text.isNotBlank() && etMail.text.isNotBlank() && etDate.text.isNotBlank() && radioGroup.checkedRadioButtonId != -1){
+        if(etUsername.text.isNotBlank() && etPassword.text.isNotBlank() && etMail.text.isNotBlank() && etDate.text.isNotBlank()){
             button.alpha = 1f
             button.isEnabled = true
         }else{

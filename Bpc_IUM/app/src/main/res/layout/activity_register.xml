@@ -111,34 +111,9 @@
         android:focusable="false"
         android:clickable="true" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RadioButton
-            android:id="@+id/radioButtonCliente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sono un cliente" />
-
-        <RadioButton
-            android:id="@+id/radioButtonTrainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sono un trainer" />
-
-        <RadioButton
-            android:id="@+id/radioButtonSponsor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sono uno sponsor" />
-    </RadioGroup>
-
     <Button
         style="@style/BaseButton"
-        android:text="Registrati!"
+        android:text="Continua"
         android:id="@+id/btnRegister"
         android:layout_marginTop="20dp"/>
 
