@@ -19,7 +19,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.TooltipCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.lezione1.RegisterActivitySponsor.GlobalData
 import java.time.LocalDate
 import java.util.Calendar
 import java.util.Date
