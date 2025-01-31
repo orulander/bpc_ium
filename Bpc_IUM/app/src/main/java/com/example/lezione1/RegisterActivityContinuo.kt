@@ -28,7 +28,7 @@ class RegisterActivityContinuo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_register)
+        setContentView(R.layout.register_continuo)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -51,8 +51,6 @@ class RegisterActivityContinuo : AppCompatActivity() {
             android.R.layout.simple_spinner_item
         )
 
-
-
         val textWatcher = object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 //updateRegisterButton(usernameEt, passwordEt, mailEt, date, checkbox, button)
@@ -72,7 +70,6 @@ class RegisterActivityContinuo : AppCompatActivity() {
         pesoEt.addTextChangedListener(textWatcher)
 
         // comportamento radioButton
-
         // Aggiungi un listener al RadioGroup
         radioGroup.setOnCheckedChangeListener { group, checkedId ->
             // Verifica se è stato selezionato almeno un RadioButton
@@ -109,5 +106,4 @@ class RegisterActivityContinuo : AppCompatActivity() {
             button.isEnabled = false
         }
     }
-
 }
