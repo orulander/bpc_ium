@@ -32,10 +32,11 @@ class SecondActivity : AppCompatActivity() {
             insets
         }
 
-        val menuIcon: ImageView = findViewById(R.id.menu_icon)
+        val chatIcon: ImageView = findViewById(R.id.chat)
 
-        menuIcon.setOnClickListener { view ->
-            showPopupMenu(view)
+        // Click sull'icona per aprire PageChat
+        chatIcon.setOnClickListener {
+            chat()
         }
 
         /**
@@ -52,7 +53,7 @@ class SecondActivity : AppCompatActivity() {
                 }
                 R.id.navigation_search -> {
                     // Azione per Cerca
-                    logout()
+                    search()
                     true
                 }
                 R.id.navigation_profile -> {
@@ -65,6 +66,11 @@ class SecondActivity : AppCompatActivity() {
         }
     }
 
+    fun chat() {
+        val intent = Intent(this, PageChat::class.java)
+        startActivity(intent)
+    }
+
     fun logout(){
         val intent = Intent(this,MainActivity::class.java)
         startActivity(intent)
@@ -72,6 +78,11 @@ class SecondActivity : AppCompatActivity() {
 
     fun home(){
         val intent = Intent(this,SecondActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun search(){
+        val intent = Intent(this,PageSearch1::class.java)
         startActivity(intent)
     }
 

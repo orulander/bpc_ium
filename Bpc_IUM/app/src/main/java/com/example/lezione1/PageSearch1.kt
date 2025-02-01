@@ -52,7 +52,7 @@ class PageSearch1 : AppCompatActivity() {
                 }
                 R.id.navigation_search -> {
                     // Azione per Cerca
-                    logout()
+                    search()
                     true
                 }
                 R.id.navigation_profile -> {
@@ -73,6 +73,11 @@ class PageSearch1 : AppCompatActivity() {
 
     fun home(){
         val intent = Intent(this,SecondActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun search(){
+        val intent = Intent(this,PageSearch1::class.java)
         startActivity(intent)
     }
 

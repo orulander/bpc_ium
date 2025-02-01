@@ -25,10 +25,10 @@
             android:textStyle="bold"/>
 
         <ImageView
-            android:id="@+id/menu_icon"
+            android:id="@+id/chat"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/menu_24"
+            android:src="@drawable/chat_bubble_24"
             android:layout_gravity="right"
             android:padding="10dp"
             android:clickable="true"

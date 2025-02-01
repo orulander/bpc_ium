@@ -32,10 +32,11 @@ class PageChat : AppCompatActivity() {
             insets
         }
 
-        val menuIcon: ImageView = findViewById(R.id.menu_icon)
+        val backArrow: ImageView = findViewById(R.id.back_arrow)
 
-        menuIcon.setOnClickListener { view ->
-            showPopupMenu(view)
+        // Click sulla freccia per aprire SecondActivity
+        backArrow.setOnClickListener {
+            home()
         }
 
         /**
