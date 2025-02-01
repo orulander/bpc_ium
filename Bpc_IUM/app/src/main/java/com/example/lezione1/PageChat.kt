@@ -1,21 +1,14 @@
 package com.example.lezione1
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
-import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -37,6 +30,19 @@ class PageChat : AppCompatActivity() {
         // Click sulla freccia per aprire SecondActivity
         backArrow.setOnClickListener {
             home()
+        }
+
+        val chatTextView: TextView = findViewById(R.id.toolbar_chat)
+        val groupsTextView: TextView = findViewById(R.id.toolbar_groups)
+
+        // Click su "Chat" → Vai a ChatActivity
+        chatTextView.setOnClickListener {
+            chat()
+        }
+
+        // Click su "Gruppi" → Vai a GroupsActivity
+        groupsTextView.setOnClickListener {
+            gruppi()
         }
 
         /**
@@ -79,6 +85,16 @@ class PageChat : AppCompatActivity() {
 
     fun profile(){
         val intent = Intent(this,ProfileCliente::class.java)
+        startActivity(intent)
+    }
+
+    fun chat() {
+        val intent = Intent(this, PageChat::class.java)
+        startActivity(intent)
+    }
+
+    fun gruppi() {
+        val intent = Intent(this, PageGroup::class.java)
         startActivity(intent)
     }
 
