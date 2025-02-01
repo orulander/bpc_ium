@@ -18,6 +18,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ProfileCliente : AppCompatActivity() {
 
@@ -33,12 +34,53 @@ class ProfileCliente : AppCompatActivity() {
 
         val menuIcon: ImageView = findViewById(R.id.menu_icon)
 
-        // Quando si clicca sull'icona del menu, mostra il popup
         menuIcon.setOnClickListener { view ->
             showPopupMenu(view)
         }
 
+        /**
+         * dovrebbe far funzionare la navbar, non funziona perché ho collegato tutto con logout
+         * per fare un check veloce e perché non abbiamo le pagine necessarie
+         **/
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navbar)
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    // Azione per Home
+                    home()
+                    true
+                }
+                R.id.navigation_search -> {
+                    // Azione per Cerca
+                    logout()
+                    true
+                }
+                R.id.navigation_profile -> {
+                    // Azione per Profilo
+                    profile()
+                    true
+                }
+                else -> false
+            }
+        }
+
     }
+
+    fun logout(){
+        val intent = Intent(this,MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun home(){
+        val intent = Intent(this,SecondActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun profile(){
+        val intent = Intent(this,ProfileCliente::class.java)
+        startActivity(intent)
+    }
+
     fun showPopupMenu(view: View) {
         val popup = PopupMenu(this, view)
         val inflater: MenuInflater = popup.menuInflater
@@ -54,6 +96,7 @@ class ProfileCliente : AppCompatActivity() {
                     true
                 }
                 R.id.logout -> {
+                    logout()
                     true
                 }
                 else -> false

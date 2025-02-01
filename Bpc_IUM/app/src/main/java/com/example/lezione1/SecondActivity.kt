@@ -34,31 +34,6 @@ class SecondActivity : AppCompatActivity() {
         }
 
         /**
-         * dovrebbe far funzionare la toolbar, non funziona perche non esce il menu
-         **/
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false) // Nasconde il titolo predefinito
-
-        toolbar.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.aaaa -> {
-                    logout()
-                    true
-                }
-                R.id.modifica -> {
-                    logout()
-                    true
-                }
-                R.id.logout -> {
-                    logout()
-                    true
-                }
-                else -> false
-            }
-        }
-
-        /**
          * dovrebbe far funzionare la navbar, non funziona perché ho collegato tutto con logout
          * per fare un check veloce e perché non abbiamo le pagine necessarie
          **/
@@ -67,7 +42,7 @@ class SecondActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.navigation_home -> {
                     // Azione per Home
-                    logout()
+                    home()
                     true
                 }
                 R.id.navigation_search -> {
@@ -87,6 +62,11 @@ class SecondActivity : AppCompatActivity() {
 
     fun logout(){
         val intent = Intent(this,MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun home(){
+        val intent = Intent(this,SecondActivity::class.java)
         startActivity(intent)
     }
 
