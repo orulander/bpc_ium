@@ -26,13 +26,6 @@ class SecondActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        val buttonLogout = findViewById<Button>(R.id.btnLogout)
-
-        buttonLogout.setOnClickListener{
-            logout()
-        }
-
         /**
          * dovrebbe far funzionare la navbar, non funziona perché ho collegato tutto con logout
          * per fare un check veloce e perché non abbiamo le pagine necessarie

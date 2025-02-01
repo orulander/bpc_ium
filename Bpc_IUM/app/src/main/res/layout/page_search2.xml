@@ -8,6 +8,32 @@
     android:orientation="vertical"
     tools:context=".PageSearch2" >
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/cobalt">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sprintify"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/menu_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/menu_24"
+            android:layout_gravity="right"
+            android:padding="10dp"
+            android:clickable="true"
+            android:focusable="true"/>
+    </androidx.cardview.widget.CardView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
