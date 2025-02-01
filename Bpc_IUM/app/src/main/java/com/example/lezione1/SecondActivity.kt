@@ -77,7 +77,7 @@ class SecondActivity : AppCompatActivity() {
                 }
                 R.id.navigation_profile -> {
                     // Azione per Profilo
-                    logout()
+                    profile()
                     true
                 }
                 else -> false
@@ -87,6 +87,11 @@ class SecondActivity : AppCompatActivity() {
 
     fun logout(){
         val intent = Intent(this,MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun profile(){
+        val intent = Intent(this,ProfileCliente::class.java)
         startActivity(intent)
     }
 }

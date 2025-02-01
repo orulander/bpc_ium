@@ -3,12 +3,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -26,30 +31,34 @@ class ProfileCliente : AppCompatActivity() {
             insets
         }
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false) // Nasconde il titolo predefinito
+        val menuIcon: ImageView = findViewById(R.id.menu_icon)
 
-        toolbar.setOnMenuItemClickListener { item ->
+        // Quando si clicca sull'icona del menu, mostra il popup
+        menuIcon.setOnClickListener { view ->
+            showPopupMenu(view)
+        }
+
+    }
+    fun showPopupMenu(view: View) {
+        val popup = PopupMenu(this, view)
+        val inflater: MenuInflater = popup.menuInflater
+        inflater.inflate(R.menu.toolbar_menu, popup.menu)
+
+        // Gestire il click sugli elementi del menu
+        popup.setOnMenuItemClickListener { item: MenuItem ->
             when (item.itemId) {
                 R.id.aaaa -> {
-                    showToast("Hai cliccato su un elemento generico")
                     true
                 }
                 R.id.modifica -> {
-                    showToast("Modifica Profilo selezionato")
                     true
                 }
                 R.id.logout -> {
-                    showToast("Logout eseguito")
                     true
                 }
                 else -> false
             }
         }
-    }
-
-    fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        popup.show()
     }
 }
