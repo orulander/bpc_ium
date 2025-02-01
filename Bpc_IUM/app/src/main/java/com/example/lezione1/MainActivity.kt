@@ -27,38 +27,38 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        // show toast - RegisterActivity
+
         val fromRegisterActivity = intent.getBooleanExtra("fromRegisterActivity", false)
         if (fromRegisterActivity){
             Toast.makeText(this, getString(R.string.success_register), Toast.LENGTH_SHORT).show()
         }
+        RegisterActivity.GlobalData.user_list.add(User("betty","betty@mail.it","12345678", "12/12/1999"))
+        RegisterActivity.GlobalData.user_list.add(User("ele","ele@mail.it","12345678", "12/12/1999"))
 
-        RegisterActivity.GlobalData.user_list.add(User("admin","admin","1234", "12/12/1999"))
-        val message = findViewById<TextView>(R.id.tvMessage)
-        val button = findViewById<Button>(R.id.btnLogin)
-        val etUsername = findViewById<EditText>(R.id.etUsername)
-        val etPassword = findViewById<EditText>(R.id.etPassword)
+        val buttonRegister = findViewById<TextView>(R.id.tvRegister)
+        buttonRegister.setOnClickListener{
+            register()
+        }
 
-        button.alpha = 0.3f
-        button.isEnabled = false
+        val buttonLogin = findViewById<Button>(R.id.btnLogin)
+        buttonLogin.alpha = 0.3f
+        buttonLogin.isEnabled = false
 
-        button.setOnClickListener{
+        buttonLogin.setOnClickListener{
             login()
         }
 
-        val register = findViewById<TextView>(R.id.tvRegister)
-        register.setOnClickListener{
-            register()
-        }
+        val etUsername = findViewById<EditText>(R.id.etUsername)
+        val etPassword = findViewById<EditText>(R.id.etPassword)
 
         val textWatcher = object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 if(etUsername.text.isNotBlank() && etPassword.text.isNotBlank()){
-                    button.alpha = 1f
-                    button.isEnabled = true
+                    buttonLogin.alpha = 1f
+                    buttonLogin.isEnabled = true
                 }else{
-                    button.alpha = 0.3f
-                    button.isEnabled = false
+                    buttonLogin.alpha = 0.3f
+                    buttonLogin.isEnabled = false
                 }
             }
 
@@ -68,10 +68,14 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
         }
+
         etUsername.addTextChangedListener(textWatcher)
         etPassword.addTextChangedListener(textWatcher)
+    }
 
-        RegisterActivity.GlobalData.user_list.add(User("prova","prova","prova","prova"))
+    fun register(){
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
     }
 
     fun login(){
@@ -79,11 +83,13 @@ class MainActivity : AppCompatActivity() {
         val passwordInput = findViewById<EditText>(R.id.etPassword)
 
         val intent = Intent(this, SecondActivity::class.java)
+
         val username = usernameInput.text.toString()
         val password = passwordInput.text.toString()
 
         val userPresent = RegisterActivity.GlobalData.user_list.any {
-            it.name == username && it.password == password}
+            it.name == username && it.password == password
+        }
 
         if(userPresent){
             startActivity(intent)
@@ -96,12 +102,5 @@ class MainActivity : AppCompatActivity() {
             usernameInput.text.clear()
             passwordInput.text.clear()
         }
-
     }
-
-    fun register(){
-        val intent = Intent(this, RegisterActivity::class.java)
-        startActivity(intent)
-    }
-
 }
