@@ -1,41 +1,42 @@
 package com.example.lezione1
+
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.SeekBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class ProfileCliente : AppCompatActivity() {
-
+class ModifyProfile : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.profile_cliente)
+        setContentView(R.layout.modify_profile)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        val menuIcon: ImageView = findViewById(R.id.menu_icon)
+        val backArrow: ImageView = findViewById(R.id.back_arrow)
 
-        menuIcon.setOnClickListener { view ->
-            showPopupMenu(view)
+        // Click sulla freccia per aprire SecondActivity
+        backArrow.setOnClickListener {
+            profile()
         }
 
         /**
@@ -63,7 +64,11 @@ class ProfileCliente : AppCompatActivity() {
                 else -> false
             }
         }
+    }
 
+    fun chat() {
+        val intent = Intent(this, PageChat::class.java)
+        startActivity(intent)
     }
 
     fun logout(){
@@ -86,11 +91,6 @@ class ProfileCliente : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun modifica() {
-        val intent = Intent(this,ModifyProfile::class.java)
-        startActivity(intent)
-    }
-
     fun showPopupMenu(view: View) {
         val popup = PopupMenu(this, view)
         val inflater: MenuInflater = popup.menuInflater
@@ -103,7 +103,6 @@ class ProfileCliente : AppCompatActivity() {
                     true
                 }
                 R.id.modifica -> {
-                    modifica()
                     true
                 }
                 R.id.logout -> {
